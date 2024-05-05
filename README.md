@@ -1,5 +1,7 @@
 # Resume Builder
 
+![Home Page - Desktop](public/img/home-page.jpg)
+
 ## Setup:
 
 > ------- Install App Dependencies -------------
