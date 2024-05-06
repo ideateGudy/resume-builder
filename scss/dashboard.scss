@@ -67,3 +67,21 @@
 .navbar .form-control {
   padding: 0.75rem 1rem;
 }
+
+//-------------Summary section ---------
+.summary {
+  padding-left: 2.3rem;
+}
+
+// --------- Profile Page ----------------
+
+@media (min-width: 768px) {
+  .profile-page {
+    width: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .profile-page {
+    width: 100%;
+  }
+}
