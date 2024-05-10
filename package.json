@@ -13,7 +13,11 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
     "@vercel/static-build": "^2.5.3",
+    "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
-    "sass": "^1.75.0"
+    "express": "^4.19.2",
+    "mysql": "^2.18.1",
+    "sass": "^1.75.0",
+    "validator": "^13.12.0"
   }
 }

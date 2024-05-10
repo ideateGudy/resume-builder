@@ -1,0 +1,3 @@
+1. Hash passwords before registering it in the database
+2. add sigin in feature in authentication. (done)
+3. add forgot password feature.
