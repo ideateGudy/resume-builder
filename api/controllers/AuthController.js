@@ -9,7 +9,7 @@ async function register(req, res) {
     const { email, password } = req.body;
 
     if (!email || !password) {
-        return res.status(400).json({ error: 'Email and password are required', errorType: 'EMAIL_PASSWORD_REQUIRED' });
+        return res.status(400).json({ status: 'error', error: { errorCode: 'EMAIL_PASSWORD_REQUIRED', errorMessage: 'Email and password are required' } });
     }
 
     const { error, errorType } = AuthUtils.validatePassword(password);
@@ -45,4 +45,23 @@ async function register(req, res) {
 }
 }
 
-module.exports = { register };
+
+async function  login(req, res) {
+    if(!req.body) {
+        return res.status(400).json({ error: 'Request body is required' });
+    }
+    const { email, password } = req.body;
+    if (!email || !password) {
+        return res.status(400).json({ status: 'error', error: { errorCode: 'EMAIL_PASSWORD_REQUIRED', errorMessage: 'Email and password are required' } });
+    }
+
+    const existingUser = await db.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password]);
+    if (existingUser.length > 0) {
+        return res.status(200).json({ status: 'success', data: { message: 'User logged in successfully' } });
+    } else {
+        return res.status(400).json({ status: 'error', error: { errorCode: 'INVALID_CREDENTIALS', errorMessage: 'Invalid email or password' } });
+    }
+
+}
+
+module.exports = { register, login };
