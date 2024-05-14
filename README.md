@@ -29,4 +29,4 @@ npm run sass:watch
 
 ```
 
-`npm run sass:watch`: Automatically compiles your `scss` file when a change is made
+`npm run sass:watch`: Automatically compiles your `scss` to `css`
