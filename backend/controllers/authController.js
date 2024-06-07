@@ -1,7 +1,7 @@
-const authUtilis = require("../utils/tempauthUtils");
-const db = require("../utils/tempdatabaseUtils");
+const authUtilis = require("../utils/authUtils");
+const db = require("../utils/databaseUtils");
 const validator = require("validator");
-const { User } = require("../models/tempuserModel");
+const { User } = require("../models/userModel");
 
 /* 
 * @desc Create a new user
