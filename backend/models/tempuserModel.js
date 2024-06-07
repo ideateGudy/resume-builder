@@ -1,4 +1,4 @@
-const { sequelize, DataTypes } = require("../utils/databaseUtils");
+const { sequelize, DataTypes } = require("../utils/tempdatabaseUtils");
 
 const User = sequelize.define("user", {
     id: {
