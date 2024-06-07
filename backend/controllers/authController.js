@@ -1,7 +1,7 @@
 const authUtilis = require("../utils/authUtils");
 const db = require("../utils/databaseUtils");
 const validator = require("validator");
-const { User } = require("../models/userModel");
+const User  = require("../models/userModel");
 
 /* 
 * @desc Create a new user
@@ -70,10 +70,8 @@ async function register(req, res) {
   }
 
   try {
-    const existingUser = await db.query("SELECT * FROM users WHERE email = ?", [
-      email,
-    ]);
-    if (existingUser.length > 0) {
+    const existingUser = await User.findOne({ where: { email } });
+    if (existingUser) {
       return res.status(400).json({
         status: "error",
         error: {
@@ -83,10 +81,8 @@ async function register(req, res) {
       });
     }
 
-    await db.query("INSERT INTO users (email, password) VALUES (?, ?)", [
-      email,
-      password,
-    ]);
+    await User.create({ email, password });
+
     return res.status(200).json({
       status: "success",
       data: { message: "User registered successfully" },
@@ -124,11 +120,8 @@ async function login(req, res) {
     });
   }
 
-  const existingUser = await db.query(
-    "SELECT * FROM users WHERE email = ? AND password = ?",
-    [email, password]
-  );
-  if (existingUser.length > 0) {
+  const existingUser = await User.findOne({ where: { email, password } });
+  if (existingUser) {
     return res.status(200).json({
       status: "success",
       data: { message: "User logged in successfully" },
