@@ -1,31 +1,27 @@
-const mysql = require('mysql2');
 const config = require('../config/database');
 
-// Connect to database
-const db = mysql.createConnection({
-    host: config.host,
-    user: config.username,
-    password: config.password,
-    database: config.database,
-    port: config.port
-})
+const { Sequelize, DataTypes } = require('sequelize');
 
-db.connect((err) => {
-    if (err) throw err;
-    console.log('MySQL connected');
-});
+const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
-// Helper function to promisify MySQL queries
-const query = (sql, args) => {
-    return new Promise((resolve, reject) => {
-        db.query(sql, args, (err, results) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(results);
-            }
-        });
-    });
-};
-
-module.exports = { query };
+async function testConnection() {
+    try {
+      await sequelize.authenticate();
+      console.log("Connection has been established successfully.");
+    } catch (error) {
+      console.error("Unable to connect to the database:", error);
+    }
+  }
+  
+  async function syncDatabase() {
+    try {
+      await sequelize.sync({ alter: true });
+      console.log("Database has been synced successfully.");
+    } catch (error) {
+      console.error("Unable to sync the database:", error);
+    }
+  }
+  
+  testConnection();
+  syncDatabase();
+  module.exports = { sequelize, DataTypes };
