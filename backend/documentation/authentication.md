@@ -1,7 +1,7 @@
 
 ### API Endpoints Documentation
 
-#### 1. `POST /api/register`
+#### 1. `POST /api/auth/register`
 
 - **Description**: Registers a new user with the provided email and password.
 - **Request Body**:
@@ -23,7 +23,7 @@
   - `500 Internal Server Error`: Server encountered an unexpected issue.
     - Body: `{ "status": "error", "error": { "errorCode": "INTERNAL_SERVER_ERROR", "errorMessage": "Internal server error" } }`
 
-#### 2. `POST /api/login`
+#### 2. `POST /api/auth/login`
 
 - **Description**: Logs in a user with the provided email and password.
 - **Request Body**:
