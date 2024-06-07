@@ -1,6 +1,7 @@
 const AuthUtils = require("../utils/authUtils");
 const db = require("../utils/databaseUtils");
 const validator = require("validator");
+const { User  } = require("../models/userModel");
 
 async function register(req, res) {
   if (!req.body) {
