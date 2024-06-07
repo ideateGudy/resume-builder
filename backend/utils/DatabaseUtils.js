@@ -15,7 +15,7 @@ async function testConnection() {
   
   async function syncDatabase() {
     try {
-      await sequelize.sync({ alter: true });
+      await sequelize.sync({ alter: true })
       console.log("Database has been synced successfully.");
     } catch (error) {
       console.error("Unable to sync the database:", error);
