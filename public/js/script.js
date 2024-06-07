@@ -55,3 +55,41 @@ $("input").intlTelInput({
   utilsScript:
     "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.6/js/utils.js",
 });
+
+
+// Display a custom toast message with gradient styles
+function showCustomToast(message, type) {
+  let backgroundColor;
+  switch (type) {
+      case "success":
+          backgroundColor = "linear-gradient(to right, #64b14f, #41a62a)";
+          break;
+      case "warning":
+          backgroundColor = "linear-gradient(to right, rgba(255, 152, 0, 0.7), #e57a00)";
+          break;
+      case "info":
+          backgroundColor = "linear-gradient(to right, #0099f7, #005bea)";
+          break;
+      case "error":
+          backgroundColor = "linear-gradient(to right, #ff6b6b, #e53935)";
+          break;
+      default:
+          backgroundColor = "linear-gradient(to right, #64b14f, #41a62a)";
+  }
+
+
+  Toastify({
+      text: message,
+      duration: 5000, // Duration in milliseconds
+      newWindow: true,
+      close: true,
+      gravity: "bottom", // Display position
+      position: "right", 
+      backgroundColor: backgroundColor, // Apply custom gradient background
+      style: {
+        borderRadius: "10px",
+        fontSize: "15px",
+      },
+      stopOnFocus: true,
+  }).showToast();
+}

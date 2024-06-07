@@ -4,12 +4,12 @@ const config = require("./config/main");
 const AuthRoutes = require("./routes/AuthRoutes");
 
 const app = express();
-app.use(cors());
+
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
+app.use(cors());
+app.use("/auth", AuthRoutes);
 
-app.use("/api/auth", AuthRoutes);
 
 
-
-app.listen(3000, () => console.log("Server started on port 3000"));
+app.listen(4500, () => console.log("Server started on port 4500"));

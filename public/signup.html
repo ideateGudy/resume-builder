@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/fontawesome.css" />
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <!-- Include Toastr CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   </head>
   <body>
     <div class="main-container">
@@ -16,7 +18,7 @@
           class="col-md-7 bg-light d-flex align-items-center justify-content-center login-form h-auto"
         >
           <main class="form-signin w-50 h-auto m-auto w-75">
-            <form>
+            <form id="registerForm">
               <a
                 href="index.html"
                 class="navbar-brand text-dark fs-4 fw-bold d-flex w-100 justify-content-center align-items-center"
@@ -37,8 +39,9 @@
                 <input
                   type="email"
                   class="form-control"
-                  id="floatingInput"
+                  id="email"
                   placeholder="name@example.com"
+                  name="email"
                 />
                 <label for="floatingInput">Email address</label>
               </div>
@@ -46,8 +49,9 @@
                 <input
                   type="password"
                   class="form-control"
-                  id="floatingPassword"
+                  id="password"
                   placeholder="Password"
+                  name="password"
                 />
                 <label for="floatingPassword">Password</label>
               </div>
@@ -55,20 +59,18 @@
                 <input
                   type="password"
                   class="form-control mt-3"
-                  id="floatingPassword"
+                  id="confirmPassword"
                   placeholder="Confirm Password"
+                  name="confirmPassword"
                 />
                 <label for="floatingPassword">Confirm Password</label>
               </div>
-
-              <a href="welcome.html"
-                ><button
+                <button
                   class="btn btn-secondary text-light w-100 py-2 mt-4"
-                  type="button"
+                  type="submit"
                 >
                   Sign Up
-                </button></a
-              >
+                </button>
               <p class="text-center my-1">or</p>
               <a href="welcome.html"
                 ><button
@@ -97,7 +99,14 @@
       </div>
     </div>
 
+       <!-- Include Toastr JS -->
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="js/config.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/signup.js"></script>
+      
+
+    </script>
   </body>
 </html>
